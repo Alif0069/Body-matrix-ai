@@ -1,8 +1,7 @@
+
 import React from "react";
 import { useEffect, useRef, useState } from "react";
-const OLLAMA_API_URL =
-  import.meta.env.VITE_OLLAMA_API_URL || "http://localhost:11434/api/generate";
-const OLLAMA_MODEL = import.meta.env.VITE_OLLAMA_MODEL || "mistral";
+const OLLAMA_API_URL = "https://barterer-bullion-overrun.ngrok-free.dev/Bmat/ask";
 const STARTER_PROMPTS = [
   "What is a healthy BMI for my age?",
   "How many calories should I eat daily?",
@@ -15,7 +14,7 @@ function createAssistantWelcomeMessage() {
   return {
     id: crypto.randomUUID(),
     role: "assistant",
-    content: "Hi! I am your local Mistral assistant. Ask me anything.",
+    content: "Hi! I am your local Body Matrix assistant. Ask me anything.",
   };
 }
 function createNewChat(title = "New Conversation") {
@@ -169,19 +168,18 @@ export default function App() {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
+          "ngrok-skip-browser-warning": "true",
         },
         signal: abortController.signal,
         body: JSON.stringify({
-          model: OLLAMA_MODEL,
-          prompt: buildPrompt(messages, userInput),
-          stream: false,
+          text: userInput,
         }),
       });
       if (!response.ok) {
-        throw new Error(`Ollama request failed with status ${response.status}`);
+        throw new Error(`Request failed with status ${response.status}`);
       }
       const data = await response.json();
-      const aiText = data.response?.trim() || "No response from model.";
+      const aiText = data.answer?.trim() || "No response from model.";
       updateChat(targetChatId, (chat) => ({
         messages: [
           ...chat.messages,
