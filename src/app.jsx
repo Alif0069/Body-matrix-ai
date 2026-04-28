@@ -14,7 +14,7 @@ function createAssistantWelcomeMessage() {
   return {
     id: crypto.randomUUID(),
     role: "assistant",
-    content: "Hi! I am your local Body Matrix assistant. Ask me anything.",
+    content: "Hi! I am your Body Matrix assistant. Ask me anything.",
   };
 }
 function createNewChat(title = "New Conversation") {
@@ -194,7 +194,7 @@ export default function App() {
     } catch (requestError) {
       if (requestError.name !== "AbortError") {
         setError(
-          "Unable to reach Ollama. Make sure Ollama is running and model 'mistral' is available."
+          "Unable to reach Body Matrix. Make sure network is running ."
         );
       }
     } finally {
