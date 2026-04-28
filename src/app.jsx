@@ -194,7 +194,7 @@ export default function App() {
     } catch (requestError) {
       if (requestError.name !== "AbortError") {
         setError(
-          "Unable to reach Body Matrix. Make sure network is running ."
+          "Unable to reach Body Matrix. Make sure your network is running ."
         );
       }
     } finally {
