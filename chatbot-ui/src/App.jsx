@@ -16,7 +16,7 @@ function createAssistantWelcomeMessage() {
   return {
     id: crypto.randomUUID(),
     role: "assistant",
-    content: "Hi! I am your local Mistral assistant. Ask me anything.",
+    content: "Hi! I am your local Mistral assistant. Ask me anything about your health.",
   };
 }
 
