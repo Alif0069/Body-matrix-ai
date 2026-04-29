@@ -434,7 +434,7 @@ export default function App() {
                     <span />
                     <span />
                     <span />
-                    <small>Analyzing data...</small>
+                    <small>Analysing data and gathering information ...</small>
                   </div>
                 </article>
               )}
