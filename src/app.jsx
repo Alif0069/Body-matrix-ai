@@ -14,7 +14,7 @@ function createAssistantWelcomeMessage() {
   return {
     id: crypto.randomUUID(),
     role: "assistant",
-    content: "Hi! I am your Body Matrix assistant. Ask me anything.",
+    content: "Hi! I am your Body Matrix assistant. Ask me anything about your health.",
   };
 }
 function createNewChat(title = "New Conversation") {
@@ -179,7 +179,7 @@ export default function App() {
         throw new Error(`Request failed with status ${response.status}`);
       }
       const data = await response.json();
-      const aiText = data.answer?.trim() || "No response from model.";
+      const aiText = data.answer?.trim() || "No response from Body Matrix.";
       updateChat(targetChatId, (chat) => ({
         messages: [
           ...chat.messages,
